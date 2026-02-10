@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💝 I Knew It! - Valentine's Day</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./yes_style.css">
+</head>
+<body>
+    <audio id="bgMusic" autoplay loop>
+        <source src="./music/Buksan Mo - Willie Revillame (Funk Version Original)  Lyric Video.mp3" type="audio/mpeg">
+    </audio>
+
+    <button class="music-toggle" id="musicToggle" onclick="toggleMusic()">
+    <button class="music-toggle" id="musicToggle" onclick="toggleMusic()">
+        <span id="musicIcon">🔊</span>
+    </button>
+    
+    <div class="confetti-container" id="confetti"></div>
+    
+    <!-- Falling Rose Petals -->
+    <div class="rose-petals" id="rosePetals"></div>
+    
+    <!-- Sparkle Effects -->
+    <div class="sparkles" id="sparkles"></div>
+    
+    <div class="dancing-gifs">
+        <div class="dancing-gif top-left">
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExa2w2bHNtdHJ4cG1rODJhczBicDhzNnpvNWRhNXFmMWlxZTRicGM0NSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/NoPNkgzHD8HSK6Nr5l/giphy.gif" alt="Dancing cat">
+        </div>
+        <div class="dancing-gif top-right">
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNzlhNjJtZW9zOHlnNWVhM3dzOGJzenpxemVpZmU5OXo0dnc1Y3J2eSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/OfkGZ5H2H3f8Y/giphy.gif" alt="Dancing celebration">
+        </div>
+        <div class="dancing-gif bottom-left">
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbG1jZWhydXo2eHhnM3Nud2F5aDV1dm8zd2YxNGFtcmlrdjd6MTkyMyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/RjVP4ZoxA3xeReLQT0/giphy.gif" alt="Happy dance">
+        </div>
+        <div class="dancing-gif bottom-right">
+            <img src="https://media.giphy.com/media/artj92V8o75VPL7AeQ/giphy.gif" alt="Dancing party">
+        </div>
+        <div class="dancing-gif floating-1">
+            <img src="https://media.giphy.com/media/kyLYXonQYYfwYDIeZl/giphy.gif" alt="Dancing baby">
+        </div>
+        <div class="dancing-gif floating-2">
+            <img src="https://media.giphy.com/media/xTiTnMhJTwNHChdTZS/giphy.gif" alt="Happy puppy">
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="celebration-box">
+            <h1 class="header_text">Yay! I Knew You'd Say Yes! 🎉</h1>
+            <p class="love-message">You just made me the happiest person ever! 💕</p>
+
+            <div class="gif_container">
+                <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExMmo3c3l5ODh3ZGN6NHhhaDE2Mjg1ZjkwOXczdDFxbWM3dTBtaW9zaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/9XY4f3FgFTT4QlaYqa/giphy.gif" alt="Celebration GIF">
+            </div>
+
+            <div class="extra-gifs">
+                <div class="extra-gif">
+                    <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZmZ1aGF2amNmdHZzM3hmMW1vb3ppZHNvY3RzMGV5OGR6bXRuZWp4MSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/aKtmStRH1R0mHKKRGu/giphy.gif" alt="Excited puppy">
+                </div>
+                <div class="extra-gif">
+                    <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExenlsZ2gzem4yYXlndTA3eGZndjNrZngzN2VqNGNhZ2VlaGkwNmR3eSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/FnIOl9UZmHF8C3NTtc/giphy.gif" alt="Happy kitten">
+                </div>
+            </div>
+
+            <div class="heart-emoji">❤️</div>
+
+
+            <div class="date-reminder">
+                <div class="date-icon">📅</div>
+                <p class="date-text">02 / 14 / 26</p>
+                <p class="date-day">This Saturday! 💕</p>
+                <p class="date-subtitle">Can't wait to see you, милый!💕😉</p>
+            </div>
+
+            <div class="love-letter">
+                <div class="letter-content">
+                    <p>💌</p>
+                    <p class="letter-text">Every moment with you is a treasure.</p>
+                    <p class="letter-text">Thank you for saying yes!</p>
+                    <p class="letter-signature">Forever yours 💖</p>
+                </div>
+            </div>
+            
+            <p class="footer-text">Happy Valentine's Day! 💖</p>
+        </div>
+    </div>
+    
+    <script>
+        // Create confetti effect
+        function createConfetti() {
+            const confettiContainer = document.getElementById('confetti');
+            const colors = ['#ff6b9d', '#ff1744', '#ff69b4', '#ffd700', '#ff6347', '#ff8c00'];
+            const shapes = ['❤️', '💕', '💖', '💝', '💗', '🌹', '💐', '✨'];
+            
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.textContent = shapes[Math.floor(Math.random() * shapes.length)];
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.animationDelay = Math.random() * 3 + 's';
+                confetti.style.fontSize = (Math.random() * 20 + 15) + 'px';
+                confettiContainer.appendChild(confetti);
+            }
+        }
+        
+        createConfetti();
+        
+        // Continuous confetti
+        setInterval(() => {
+            const confettiContainer = document.getElementById('confetti');
+            if (confettiContainer.children.length < 30) {
+                createConfetti();
+            }
+        }, 2000);
+        
+        // Create falling rose petals
+        function createRosePetal() {
+            const petalsContainer = document.getElementById('rosePetals');
+            const petal = document.createElement('div');
+            petal.className = 'rose-petal';
+            petal.textContent = '🌹';
+            petal.style.left = Math.random() * 100 + 'vw';
+            petal.style.animationDuration = (Math.random() * 3 + 4) + 's';
+            petal.style.animationDelay = Math.random() * 2 + 's';
+            petalsContainer.appendChild(petal);
+            
+            setTimeout(() => petal.remove(), 7000);
+        }
+        
+        // Create rose petals periodically
+        setInterval(createRosePetal, 800);
+        for (let i = 0; i < 15; i++) {
+            setTimeout(createRosePetal, i * 200);
+        }
+        
+        // Create sparkle effects
+        function createSparkle() {
+            const sparklesContainer = document.getElementById('sparkles');
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.textContent = '✨';
+            sparkle.style.left = Math.random() * 100 + 'vw';
+            sparkle.style.top = Math.random() * 100 + 'vh';
+            sparkle.style.animationDelay = Math.random() * 1 + 's';
+            sparklesContainer.appendChild(sparkle);
+            
+            setTimeout(() => sparkle.remove(), 2000);
+        }
+        
+        // Create sparkles periodically
+        setInterval(createSparkle, 500);
+    </script>
+    <script src="music-control.js"></script>
+</body>
+</html>
