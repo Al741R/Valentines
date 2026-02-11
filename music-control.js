@@ -23,6 +23,7 @@ function startExperience() {
             musicIcon.textContent = '🔊';
         }).catch(error => {
             console.error('Playback failed:', error);
+            isPlaying = false;
             musicIcon.textContent = '🔇';
         });
     }
