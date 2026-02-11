@@ -3,32 +3,34 @@ const bgMusic = document.getElementById('bgMusic');
 const musicIcon = document.getElementById('musicIcon');
 let isPlaying = false;
 
-// Try to autoplay immediately when page loads
-window.addEventListener('load', () => {
+// Function to start the experience
+function startExperience() {
+    const startScreen = document.getElementById('startScreen');
+    if (startScreen) {
+        startScreen.style.display = 'none';
+    }
+    
     if (bgMusic) {
-        bgMusic.volume = 0.4;
-        
-        // Check if we're resuming playback from previous page
         const savedTime = sessionStorage.getItem('musicCurrentTime');
-        const wasMusicPlaying = sessionStorage.getItem('musicWasPlaying') === 'true';
-        
         if (savedTime) {
             bgMusic.currentTime = parseFloat(savedTime);
             sessionStorage.removeItem('musicCurrentTime');
         }
         
-        const playPromise = bgMusic.play();
+        bgMusic.volume = 0.4;
+        bgMusic.play().then(() => {
+            isPlaying = true;
+            musicIcon.textContent = '🔊';
+        }).catch(error => {
+            console.error('Playback failed:', error);
+            musicIcon.textContent = '🔇';
+        });
+    }
+}
 
-        if (playPromise !== undefined) {
-            playPromise.then(() => {
-                isPlaying = true;
-                musicIcon.textContent = '🔊';
-            }).catch(() => {
-                document.addEventListener('click', attemptPlay, { once: true });
-                document.addEventListener('keydown', attemptPlay, { once: true });
-            });
-        }
-
+// Save music progress periodically
+window.addEventListener('load', () => {
+    if (bgMusic) {
         setInterval(() => {
             if (bgMusic && !bgMusic.paused) {
                 sessionStorage.setItem('musicCurrentTime', bgMusic.currentTime.toString());
@@ -37,16 +39,6 @@ window.addEventListener('load', () => {
         }, 500);
     }
 });
-
-function attemptPlay() {
-    if (!isPlaying && bgMusic) {
-        bgMusic.volume = 0.4;
-        bgMusic.play().then(() => {
-            isPlaying = true;
-            musicIcon.textContent = '🔊';
-        }).catch(() => {});
-    }
-}
 
 function toggleMusic() {
     if (!bgMusic) return;
